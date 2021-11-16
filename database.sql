@@ -18,10 +18,14 @@ create table products (
 create table order_product(
     order_id int not null auto_increment primary key,
 	quantity int not null DEFAULT 1,
-    user_member int not null,
-    product_id int not null,
-    FOREIGN KEY (user_member) REFERENCES member(member_id),
-    FOREIGN KEY (product_id) REFERENCES products(product_id)
+    user_member int,
+    product_id int,
+    FOREIGN KEY (user_member)
+        REFERENCES member(member_id)
+        ON DELETE SET NULL,
+    FOREIGN KEY (product_id)
+        REFERENCES products(product_id)
+        ON DELETE SET NULL
 );
 insert into products (product_name, product_type, product_price, product_quantity, product_detail, product_rating)
 values ('Product1', 'Type1', 1, 100, 'Product1 detail', 50);
