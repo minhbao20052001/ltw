@@ -1,5 +1,5 @@
 <?php
-
+require_once "./mvc/core/basehref.php";
 use function PHPSTORM_META\type;
 
 class manage extends controller{
@@ -13,7 +13,7 @@ class manage extends controller{
     }
     public function deleteProduct($id){
         $demoData = $this->model('manageModal')->deleteProductManage($id);
-        header("Location: http://localhost/ltw/manage/viewProductPage/1");
+        header("Location: " . geturl(). "/manage/viewProductPage/1");
     }
     public function editProduct($id){
         $name = $_POST['Name_Product'];
@@ -21,10 +21,11 @@ class manage extends controller{
         $price = $_POST['Price_Product'];
         $quantity = $_POST['Quantity_Product'];
         $detail = $_POST['Detail_Product'];
+        $brand = $_POST['Brand_Product'];
         $rating = $_POST['Rating_Product'];
         
-        $demoData = $this->model('manageModal')->editProductManage($id,$name,$type,$price,$quantity,$detail,$rating);
-        header("Location: http://localhost/ltw/manage/viewProductPage/1");
+        $demoData = $this->model('manageModal')->editProductManage($id,$name,$type,$price,$quantity,$detail,$brand,$rating);
+        header("Location: " . geturl(). "/manage/viewProductPage/1");
     }
     public function viewUserPage($page){
         if($page < 1) $page = 1;
@@ -36,7 +37,7 @@ class manage extends controller{
     }
     public function deleteUser($id){
         $demoData = $this->model('manageModal')->deleteUserManage($id);
-        header("Location: http://localhost/ltw/manage/viewUserPage/1");
+        header("Location: " . geturl(). "/manage/viewUserPage/1");
     }
     public function editUser($id){
         $Name = $_POST['Name_User'];
@@ -46,7 +47,7 @@ class manage extends controller{
         $Avatar = $_POST['Avatar_User'];
         
         $demoData = $this->model('manageModal')->editUserManage($id,$Name,$Password,$Email,$Phone,$Avatar);
-        header("Location: http://localhost/ltw/manage/viewUserPage/1");
+        header("Location: " . geturl(). "/manage/viewUserPage/1");
     }
     public function note(){
         $this->view("note");
@@ -61,7 +62,7 @@ class manage extends controller{
     }
     public function deleteOrder($id){
         $demoData = $this->model('manageModal')->deleteOrderManage($id);
-        header("Location: http://localhost/ltw/manage/viewOrderPage/1");
+        header("Location: " . geturl(). "/manage/viewOrderPage/1");
     }
 }
 ?>

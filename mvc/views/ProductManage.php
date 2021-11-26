@@ -32,29 +32,8 @@ $home_url = getUrl().'/';
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto fontSize">
-                    <li class="nav-item active mr-4 selectedMenu">
-                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active mr-4">
-                        <a class="nav-link" href="/">Pizza <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active mr-4">
-                        <a class="nav-link" href="/">Khai vị<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active mr-4">
-                        <a class="nav-link" href="/">Mì ý<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active mr-4">
-                        <a class="nav-link" href="/">Salad<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active mr-4">
-                        <a class="nav-link" href="/">Tráng miệng<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active mr-4">
-                        <a class="nav-link" href="/">Thức uống<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active mr-4" style="background-color: rgb(148, 204, 253);">
-                        <a class="nav-link" href="/">Admin<span class="sr-only">(current)</span></a>
+                <li class="nav-item active mr-4 selectedMenu">
+                        <a class="nav-link" href="./home">Back To Home<span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
             </div>
@@ -104,7 +83,8 @@ $home_url = getUrl().'/';
                                     <th scope="col">Type</th>
                                     <th scope="col">Price</th>
                                     <th scope="col">Quantity</th>
-                                    <th scope="col">Rating</th>
+                                    <th scope="col">Branch</th>
+                                    <th scope="col">Image</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -112,21 +92,28 @@ $home_url = getUrl().'/';
                                 <!-- item -->
                                 <?php foreach($data as $value): ?>
                                     <tr data-id="<?=$value['product_id']?>">
-                                        <th scope="row"><?=$value['product_id']?></th>
-                                        <td class="Name_Product_value"><?=$value['product_name']?></td>
+                                        <th scope="row"><?=$value['product_id']?></th> 
+                                        <td class="Name_Product_value"><?php echo substr($value['product_name'],0,12)?>...</td>
                                         <td class="Type_Product_value"><?=$value['product_type']?></td>
                                         <td class="Price_Product_value"><?=$value['product_price']?></td>
                                         <td class="Quantity_Product_value"><?=$value['product_quantity']?></td>
-                                        <td class="Rating_Product_value"><?=$value['product_rating']?></td>
+                                        <td class="Rating_Product_value"><?=$value['product_brand']?></td>
+                                        <td class="Rating_Product_value"><a href="<?=$value['product_image']?>">Link</a></td>
                                         <td>
                                             <i class="bi bi-plus-circle-fill detail-product" data-id="<?=$value['product_id']?>"></i>
-                                            <i class="bi bi-gear-fill edit-product" data-id="<?=$value['product_id']?>--<?=$value['product_name']?>--<?=$value['product_type']?>--<?=$value['product_price']?>--<?=$value['product_quantity']?>--<?=$value['product_detail']?>--<?=$value['product_rating']?>" data-toggle="modal" data-target="#exampleModalScrollable"></i>
+                                            <i class="bi bi-gear-fill edit-product" data-id="<?=$value['product_id']?>--<?=$value['product_name']?>--<?=$value['product_type']?>--<?=$value['product_price']?>--<?=$value['product_quantity']?>--<?=$value['product_detail']?>--<?=$value['product_brand']?>--<?=$value['product_image']?>" data-toggle="modal" data-target="#exampleModalScrollable"></i>
                                             <i class="bi bi-x-circle-fill delete-product" data-toggle="modal" data-target="#exampleModal" data-id="<?=$value['product_id']?>"></i>
                                         </td>
                                     </tr>
 
                                     <tr class="hidden_modal" id="<?=$value['product_id']?>">
-                                        <td colspan="6">
+                                        <td colspan="8">
+                                            <div class="table_payment">
+                                                <div class="table_payment_title">Name</div>
+                                            </div>
+                                            <div class="table_payment_detail">
+                                                <p><?=$value['product_name']?></p>
+                                            </div>
                                             <div class="table_payment">
                                                 <div class="table_payment_title">Description</div>
                                             </div>
@@ -163,6 +150,31 @@ $home_url = getUrl().'/';
                 </div>
             </div>
         </div>
+        </div>
+        <div class="footer">
+            <div class="useful-link">
+                <h3>Get To Know Us</h3>
+                <div><a href="#">Facebook</a></div>
+                <div><a href="#">Instagram</a></div>
+                <div><a href="#">Twitter</a></div>
+                <div><a href="#">Youtube</a></div>          
+            </div>
+            <div class="useful-link">
+                <h3>Let Us Help You</h3>
+                <div><a href="#">Shipping Rates & Policies</a></div>
+                <div><a href="#">Returns & Replacements</a></div>
+                <div><a href="#">Manage Your Content and Devices</a></div>
+                <div><a href="#">Help</a></div>
+            </div>
+            <div class="useful-link">
+                <h3>Make Money With Us</h3>
+                <div><a href="#">Sell products on RedStore</a></div>
+                <div><a href="#">Sell on RedStore Business</a></div>
+                <div><a href="#">Advertise Your Products</a></div>
+                <div><a href="#">Self-Publish with Us</a></div>
+            </div>
+            
+    </div>
         <!-- DELETE Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -219,7 +231,11 @@ $home_url = getUrl().'/';
                         <input type="text" class="form-control" id="Detail_Product" name="Detail_Product" required>
                     </div>
                     <div class="form-group">
-                        <label for="Rating_Product">Rating</label>
+                        <label for="Brand_Product">Branch</label>
+                        <input type="text" class="form-control" id="Brand_Product" name="Brand_Product" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Rating_Product">Image</label>
                         <input type="text" class="form-control" id="Rating_Product" name="Rating_Product" required>
                     </div>
                 </form>
@@ -276,7 +292,8 @@ $home_url = getUrl().'/';
                 document.getElementById('Price_Product').value = arr_value[3];
                 document.getElementById('Quantity_Product').value = arr_value[4];
                 document.getElementById('Detail_Product').value = arr_value[5];
-                document.getElementById('Rating_Product').value = arr_value[6];
+                document.getElementById('Brand_Product').value = arr_value[6];
+                document.getElementById('Rating_Product').value = arr_value[7];
 
             })
         })
@@ -286,13 +303,14 @@ $home_url = getUrl().'/';
                 document.getElementById('Price_Product').value = '';
                 document.getElementById('Quantity_Product').value = '';
                 document.getElementById('Detail_Product').value = '';
+                document.getElementById('Brand_Product').value = '';
                 document.getElementById('Rating_Product').value = '';
         })
         document.getElementById('button_form_event').addEventListener('click', () => {
             var form_event = document.getElementById('form_event');
             if(arr_value) form_event.action = `manage/editProduct/${arr_value[0]}`;
             else form_event.action = `manage/editProduct/-1`
-            if(document.getElementById('Name_Product').value&&document.getElementById('Type_Product')&&document.getElementById('Price_Product').value&&document.getElementById('Quantity_Product').value&&document.getElementById('Detail_Product').value&&document.getElementById('Rating_Product').value)
+            if(document.getElementById('Brand_Product').value&&document.getElementById('Name_Product').value&&document.getElementById('Type_Product')&&document.getElementById('Price_Product').value&&document.getElementById('Quantity_Product').value&&document.getElementById('Detail_Product').value&&document.getElementById('Rating_Product').value)
                 form_event.submit();
         })
         

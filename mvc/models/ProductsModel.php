@@ -10,8 +10,13 @@
             return mysqli_query($this->connect, $qr);
         }
 
-        public function getProducts($type){
-            $qr = "SELECT product_name, product_price, product_image FROM products WHERE product_type='".$type."'";
+        public function getAllProductsOfCategory($category){
+            $qr = "SELECT * FROM PRODUCTS WHERE product_type='".$category."'";
+            return mysqli_query($this->connect, $qr);
+        }
+
+        public function getRelatedProducts($category){
+            $qr = "SELECT product_id, product_name, product_price, product_image FROM products WHERE product_type='".$category."'";
             return mysqli_query($this->connect, $qr);
         }
 

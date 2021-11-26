@@ -33,7 +33,7 @@ class app{
 
     function UrlProcess(){
         if( !isset($_GET["url"]) ){
-            $_GET["url"] = "manage/viewProductPage/1";
+            $_GET["url"] = "home/defaultView";
         }
         if( isset($_GET["url"]) ){
             return explode("/", filter_var(trim($_GET["url"], "/")));

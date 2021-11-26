@@ -1,6 +1,16 @@
+<?php
+    require_once "./mvc/core/basehref.php";
+    $home_url = getUrl().'/';
+    if (!$_SESSION['username']){
+        header("Location: " . geturl(). "/login");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <?php
+            echo "<base href='${home_url}'>";
+    ?>
     <title>Home Page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,7 +21,7 @@
 <body>
     <div class="header">
         <div class="logo">
-            <a href="/assignment/home"><img src="https://lh3.googleusercontent.com/d/1Rc3H-oqkp8BIRXpcL_EOUMlBeNf5CSll" alt="#"></a>
+            <a href="./home"><img src="https://lh3.googleusercontent.com/d/1Rc3H-oqkp8BIRXpcL_EOUMlBeNf5CSll" alt="#"></a>
         </div>
         <div>
             <nav class="menu">
@@ -20,7 +30,9 @@
                     <li><a href="products">Products</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Contact</a></li>
-                    <li><a href="#">Account</a></li>
+                    
+                    <?php if($_SESSION['username'] == 1) echo "<li><a href=\"manage/viewProductPage/1\">Admin</a></li>";
+                    else echo "<li><a href=\"#\">Account</a></li>";?>
                 </ul>
             </nav>
         </div>
@@ -37,85 +49,39 @@
         </div>
 
         <div class="intro-image">
-            <img src="./public/images/exclusive.png" alt="#">
         </div>
     </div>
     
     <div class="ads">
-        <img src="./public/images/ads1.jpg" alt="#" style="border-radius: 50px 0 0 50px;">
-        <img src="./public/images/ads2.jpg" alt="#">
-        <img src="./public/images/ads3.jpg" alt="#" style="border-radius: 0 50px 50px 0;">
+        <img src="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Dashboard/Fuji_Dash_Deals_1x._SY304_CB430401028_.jpg" alt="#" style="border-radius: 50px 0 0 50px;">
+        <img src="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Dashboard/Fuji_Dash_PC_1x._SY304_CB431800965_.jpg" alt="#">
+        <img src="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Dashboard/Fuji_Dash_HomeBedding_Single_Cat_1x._SY304_CB418596953_.jpg" alt="#" style="border-radius: 0 50px 50px 0;">
     </div>
 
     <div class="category-list">
-        <div class="category-box">
-            <h2>Gaming accessories</h2>
-            <div class="product-list">
-                <div class="product">
-                    <a href="products"><img src="./public/images/gaming1.jpg" alt="#"></a>
-                    <p>Keyboards</p>
-                </div>
-                <div class="product">
-                    <a href="products"><img src="./public/images/gaming2.jpg" alt="#"></a>
-                    <p>Headphones</p>
-                </div>
-                <div class="product">
-                    <a href="products"><img src="./public/images/gaming3.jpg" alt="#"></a>
-                    <p>Mouses</p>
-                </div>
-                <div class="product">
-                    <a href="products"><img src="./public/images/gaming4.jpg" alt="#"></a>
-                    <p>Chairs</p>
-                </div>
-            </div>
-            <div class="seemore-btn"><a href="products">See more</a></div>
-        </div>
 
-        <div class="category-box">
-            <h2>Gaming accessories</h2>
-            <div class="product-list">
-                <div class="product">
-                    <a href="products"><img src="./public/images/gaming1.jpg" alt="#"></a>
-                    <p>Keyboards</p>
+        <?php foreach ($data["all-type"] as $value): ?>
+            <div class="category-box">
+                <h2><?=$value["product_type"]?></h2>
+                <div class="product-list">
+                    <?php 
+                    $pro_of_type = $data["pro-db"]->getAllProductsOfCategory($value["product_type"]);
+                    $i = 0;
+                    foreach ($pro_of_type as $pro):
+                        $i++;
+                    ?>
+                        <div class="product">
+                            <a href="products/productdetail/<?=$pro["product_id"]?>"><img src="<?=$pro["product_image"] ?>" alt="#"></a>
+                            <p><?=substr($pro["product_name"], 0, 20)?>...</p>
+                        </div>
+                    
+                    <?php 
+                        if ($i > 3) break;
+                        endforeach; ?>
                 </div>
-                <div class="product">
-                    <a href="products"><img src="./public/images/gaming2.jpg" alt="#"></a>
-                    <p>Headphones</p>
-                </div>
-                <div class="product">
-                    <a href="products"><img src="./public/images/gaming3.jpg" alt="#"></a>
-                    <p>Mouses</p>
-                </div>
-                <div class="product">
-                    <a href="products"><img src="./public/images/gaming4.jpg" alt="#"></a>
-                    <p>Chairs</p>
-                </div>
+                <div class="seemore-btn"><a href="products/category/<?=$value["product_type"]?>">See more</a></div>
             </div>
-            <div class="seemore-btn"><a href="products">See more</a></div>
-        </div>
-
-        <div class="category-box">
-            <h2>Gaming accessories</h2>
-            <div class="product-list">
-                <div class="product">
-                    <a href="products"><img src="./public/images/gaming1.jpg" alt="#"></a>
-                    <p>Keyboards</p>
-                </div>
-                <div class="product">
-                    <a href="products"><img src="./public/images/gaming2.jpg" alt="#"></a>
-                    <p>Headphones</p>
-                </div>
-                <div class="product">
-                    <a href="products"><img src="./public/images/gaming3.jpg" alt="#"></a>
-                    <p>Mouses</p>
-                </div>
-                <div class="product">
-                    <a href="products"><img src="./public/images/gaming4.jpg" alt="#"></a>
-                    <p>Chairs</p>
-                </div>
-            </div>
-            <div class="seemore-btn"><a href="products">See more</a></div>
-        </div>
+        <?php endforeach; ?>
 
         <div class="category-scroll">
             <h2>May be you need</h2>
@@ -134,24 +100,24 @@
     <div class="footer">
         <div class="useful-link">
             <h3>Get To Know Us</h3>
-            <div><a href="#">Link1</a></div>
-            <div><a href="#">Link1</a></div>
-            <div><a href="#">Link1</a></div>
-            <div><a href="#">Link1</a></div>
+            <div><a href="#">Facebook</a></div>
+            <div><a href="#">Instagram</a></div>
+            <div><a href="#">Twitter</a></div>
+            <div><a href="#">Youtube</a></div>          
         </div>
         <div class="useful-link">
             <h3>Let Us Help You</h3>
-            <div><a href="#">Link1</a></div>
-            <div><a href="#">Link1</a></div>
-            <div><a href="#">Link1</a></div>
-            <div><a href="#">Link1</a></div>
+            <div><a href="#">Shipping Rates & Policies</a></div>
+            <div><a href="#">Returns & Replacements</a></div>
+            <div><a href="#">Manage Your Content and Devices</a></div>
+            <div><a href="#">Help</a></div>
         </div>
         <div class="useful-link">
             <h3>Make Money With Us</h3>
-            <div><a href="#">Link1</a></div>
-            <div><a href="#">Link1</a></div>
-            <div><a href="#">Link1</a></div>
-            <div><a href="#">Link1</a></div>
+            <div><a href="#">Sell products on RedStore</a></div>
+            <div><a href="#">Sell on RedStore Business</a></div>
+            <div><a href="#">Advertise Your Products</a></div>
+            <div><a href="#">Self-Publish with Us</a></div>
         </div>
         
     </div>

@@ -32,29 +32,8 @@ $home_url = getUrl().'/';
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto fontSize">
-                    <li class="nav-item active mr-4 selectedMenu">
-                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active mr-4">
-                        <a class="nav-link" href="/">Pizza <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active mr-4">
-                        <a class="nav-link" href="/">Khai vị<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active mr-4">
-                        <a class="nav-link" href="/">Mì ý<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active mr-4">
-                        <a class="nav-link" href="/">Salad<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active mr-4">
-                        <a class="nav-link" href="/">Tráng miệng<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active mr-4">
-                        <a class="nav-link" href="/">Thức uống<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active mr-4" style="background-color: rgb(148, 204, 253);">
-                        <a class="nav-link" href="/">Admin<span class="sr-only">(current)</span></a>
+                <li class="nav-item active mr-4 selectedMenu">
+                        <a class="nav-link" href="./home">Back To Home<span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
             </div>
@@ -162,6 +141,30 @@ $home_url = getUrl().'/';
                 </div>
             </div>
         </div>
+        </div>
+        <div class="footer">
+            <div class="useful-link">
+                <h3>Get To Know Us</h3>
+                <div><a href="#">Facebook</a></div>
+                <div><a href="#">Instagram</a></div>
+                <div><a href="#">Twitter</a></div>
+                <div><a href="#">Youtube</a></div>          
+            </div>
+            <div class="useful-link">
+                <h3>Let Us Help You</h3>
+                <div><a href="#">Shipping Rates & Policies</a></div>
+                <div><a href="#">Returns & Replacements</a></div>
+                <div><a href="#">Manage Your Content and Devices</a></div>
+                <div><a href="#">Help</a></div>
+            </div>
+            <div class="useful-link">
+                <h3>Make Money With Us</h3>
+                <div><a href="#">Sell products on RedStore</a></div>
+                <div><a href="#">Sell on RedStore Business</a></div>
+                <div><a href="#">Advertise Your Products</a></div>
+                <div><a href="#">Self-Publish with Us</a></div>
+            </div>
+    </div>
         <!-- DELETE Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">

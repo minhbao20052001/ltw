@@ -10,16 +10,16 @@ class manageModal extends db{
         $query1 = $this->_query($typesql);
         return $query1;
     }
-    public function editProductManage($id,$name,$type,$price,$quantity,$detail,$rating){
+    public function editProductManage($id,$name,$type,$price,$quantity,$detail,$brand,$rating){
         if($id != -1){
             $typesql = "DELETE FROM products WHERE product_id=" . $id . ";";
             $query = $this->_query($typesql);
-            $typesql1 = "insert into products (product_id,product_name, product_type, product_price, product_quantity, product_detail, product_rating)
-            values (".$id.",'".$name."', '".$type."', ".$price.", ".$quantity.", '".$detail."', ".$rating.");";
+            $typesql1 = "insert into products (product_id,product_name, product_type, product_price, product_quantity, product_detail, product_brand, product_image)
+            values (".$id.",'".$name."', '".$type."', ".$price.", ".$quantity.", '".$detail."', '".$brand."', '".$rating."');";
             $query1 = $this->_query($typesql1);
         }else{
-            $typesql1 = "insert into products (product_name, product_type, product_price, product_quantity, product_detail, product_rating)
-            values ('".$name."', '".$type."', ".$price.", ".$quantity.", '".$detail."', ".$rating.");";
+            $typesql1 = "insert into products (product_name, product_type, product_price, product_quantity, product_detail, product_brand, product_image)
+            values ('".$name."', '".$type."', ".$price.", ".$quantity.", '".$detail."', '".$brand."', '".$rating."');";
             $query1 = $this->_query($typesql1);
         }
         return $id;

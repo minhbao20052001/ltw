@@ -1,12 +1,19 @@
+<?php
+    require_once "./mvc/core/basehref.php";
+    $home_url = getUrl().'/';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <?php
+            echo "<base href='${home_url}'>";
+    ?>
     <title>Products Page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         <?php 
-            include "./assets/css/detail1.css";
+            include "./assets/css/detail.css";
         ?>
     </style>
 
@@ -23,12 +30,12 @@
 <body>
     <div class="header">
         <div class="logo">
-            <a href="/assignment/home"><img src="https://lh3.googleusercontent.com/d/1Rc3H-oqkp8BIRXpcL_EOUMlBeNf5CSll" alt=""></a>
+            <a href="home"><img src="https://lh3.googleusercontent.com/d/1Rc3H-oqkp8BIRXpcL_EOUMlBeNf5CSll" alt=""></a>
         </div>
         <div>
             <nav class="menu">
                 <ul>
-                    <li><a href="/assignment/home">Home</a></li>
+                    <li><a href="home">Home</a></li>
                     <li><a style="background-color: dodgerblue;" href="products">Products</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Contact</a></li>
@@ -75,10 +82,15 @@
             <div class="order">
                 <div class="name">Order</div>
                 <div>
-                    <form id="order-form">
-                    
+                    <form id="order-form" method="POST" action="payment/addToCart">
+                        <div class="order-infor" style="display: none;">
+                            <input type="text" name="user_member" value="<?php echo $_SESSION['username']?>">
+                        </div>
+                        <div class="order-infor" style="display: none;">
+                            <input type="text" name="product_id" value="<?php echo $data["pro"]["product_id"]?>">
+                        </div>
                         <div class="order-infor">
-                            <label>Quantity:</label><input type="number" id="buy-quantity" min="1" max="<?php echo $data["pro"]["product_quantity"] ?>" value="1" onchange="getTotalCost()">
+                            <label>Quantity:</label><input name="quantity" type="number" id="buy-quantity" min="1" max="<?php echo $data["pro"]["product_quantity"] ?>" value="1" onchange="getTotalCost()">
                         </div>
                             
                         <div class="order-infor">
@@ -95,7 +107,7 @@
                         </div>
 
                         <div id="add-to-cart-btn">
-                            <button>Add to Cart</button>
+                            <button type="submit">Add to Cart</button>
                         </div>
                     </form>
                 </div>
@@ -109,7 +121,7 @@
                 <?php 
                     while ($row = mysqli_fetch_assoc($data["related-pro"])){
                         echo '<div class="product">
-                                <a href="#"><div class="img"><img src="'.$row["product_image"].'" alt="#"></div></a>
+                                <a href="products/productdetail/'.$row["product_id"].'"><div class="img"><img src="'.$row["product_image"].'" alt="#"></div></a>
                                 <h3>'.$row["product_price"].'$</h3>
                                 <div class="name">'.$row["product_name"].'</div>
                             </div>';

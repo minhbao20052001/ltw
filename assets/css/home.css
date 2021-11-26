@@ -141,6 +141,12 @@ body {
     margin-right: 20px;
 }
 
+.category-box .product img {
+    max-height: 180px;
+    min-height: 180px;
+    max-width: 180px;
+}
+
 .category-scroll .product {
     flex: 40%;
     min-width: 186px;
@@ -166,6 +172,7 @@ body {
 
 .seemore-btn {
     margin-bottom: 20px;
+    margin-left: -20px;
 }
 
 .seemore-btn a {
@@ -198,6 +205,10 @@ body {
 
 .useful-link div {
     margin: 10px;
+}
+
+.useful-link div:hover {
+    color: rgb(255, 255, 255);
 }
 
 @media only screen and (max-width: 1000px) {

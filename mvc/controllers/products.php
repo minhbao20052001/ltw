@@ -7,17 +7,23 @@
             [
                 "all-pro"=>$productDB->getAllProducts(),
                 "all-type"=>$productDB->getAllCategories(),
+                "type"=>"",
             ]);
         }
 
         function category($category){
-            $this->view("ProductsView", ["category"=>$category]);
+            $productDB = $this->model("ProductsModel");
+            $this->view("ProductsView", [
+                "all-pro"=>$productDB->getAllProductsOfCategory($category),
+                "all-type"=>$productDB->getAllCategories(),
+                "type"=>$category,
+            ]);
         }
 
         function productdetail($product_id){
             $productDB = $this->model("ProductsModel");
             $product = mysqli_fetch_array($productDB->getProduct($product_id));
-            $related_product = $productDB->getProducts($product["product_type"]);
+            $related_product = $productDB->getRelatedProducts($product["product_type"]);
             $this->view("ProductDetailView", ["pro"=>$product, "related-pro"=>$related_product]);
         }
     }
