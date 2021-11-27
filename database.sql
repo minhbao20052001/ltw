@@ -1,4 +1,5 @@
 CREATE DATABASE db_ass;
+
 USE db_ass;
 create table member(
 	member_id int not null auto_increment primary key,
