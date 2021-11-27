@@ -24,5 +24,10 @@
             $qr = "SELECT * FROM PRODUCTS WHERE product_id = $product_id";
             return mysqli_query($this->connect, $qr);
         }
+
+        public function getAllProductsWithPrice($p1, $p2){
+            $qr = "SELECT * FROM PRODUCTS WHERE product_price >=".$p1." AND product_price <".$p2."";
+            return mysqli_query($this->connect, $qr);
+        }
     }
 ?>

@@ -53,11 +53,22 @@ body {
 
 .order-infor {
     display: flex;
+    border-right: 1px solid black;
+    max-width: 60%;
+    min-width: 60%;
+}
+
+.order-img {
+    max-width: 220px;
+    min-width: 220px;
+    max-height: 220px;
+    min-height: 220px;
+    display: flex;
+    justify-content: center;
 }
 
 .order img {
     max-width: 200px;
-    min-width: 200px;
     max-height: 200px;
     padding: 10px;
 }
@@ -75,4 +86,57 @@ body {
     min-width: 50px;
     max-width: 50px;
     border-right: 1px solid black;
+}
+
+.total {
+    flex: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 300px;
+}
+
+.total a {
+    background-color: chocolate;
+    border-radius: 30px;
+    border: 1px solid white;
+    text-align: center;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    color: white;
+}
+
+.total a:hover {
+    background-color: rgb(230, 136, 70);
+}
+
+@media only screen and (max-width: 1000px) {
+    .header {
+        display: block;
+    }
+
+    .logo {
+        text-align: center;
+    }
+
+    .menu {
+        display: flex;
+        justify-content: center;
+    }
+
+    .intro {
+        display: block;
+    }
+
+    .intro-desc {
+        text-align: center;
+    }
+
+    .intro-image {
+        margin-top: 50px;
+    }
+
+    .intro-image img {
+        width: 50%;
+    }
 }

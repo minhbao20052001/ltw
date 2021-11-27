@@ -28,7 +28,6 @@
                 <ul>
                     <li><a style="background-color: dodgerblue;" href="#">Home</a></li>
                     <li><a href="products">Products</a></li>
-                    <li><a href="#">About</a></li>
                     <li><a href="cart"><img style="width:20px;padding:0px;" src="https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png"></a></li>
                     
                     <?php if($_SESSION['username'] == 1) echo "<li><a href=\"manage/viewProductPage/1\">Admin</a></li><li><a href=\"login/logout\">Logout</a></li>";
@@ -119,7 +118,6 @@
             <div><a href="#">Advertise Your Products</a></div>
             <div><a href="#">Self-Publish with Us</a></div>
         </div>
-        
     </div>
 
 </body>

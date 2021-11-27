@@ -7,7 +7,6 @@
             [
                 "all-pro"=>$productDB->getAllProducts(),
                 "all-type"=>$productDB->getAllCategories(),
-                "type"=>"",
             ]);
         }
 
@@ -17,6 +16,22 @@
                 "all-pro"=>$productDB->getAllProductsOfCategory($category),
                 "all-type"=>$productDB->getAllCategories(),
                 "type"=>$category,
+            ]);
+        }
+
+        function price($p1, $p2){
+            $productDB = $this->model("ProductsModel");
+            $priceTitle = "";
+            if ($p1 == 0) $priceTitle = "Under $25";
+            else if ($p1 == 25) $priceTitle = "$25 to $50";
+            else if ($p1 == 50) $priceTitle = "$50 to $100";
+            else if ($p1 == 100) $priceTitle = "$100 to $200";
+            else $priceTitle = "$200 & Above";
+
+            $this->view("ProductsView", [
+                "all-pro"=>$productDB->getAllProductsWithPrice($p1, $p2),
+                "all-type"=>$productDB->getAllCategories(),
+                "price"=>$priceTitle,
             ]);
         }
 

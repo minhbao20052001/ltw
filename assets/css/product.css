@@ -102,6 +102,7 @@ body {
 .product-img img {
     margin: auto;
     max-height: 140px;
+    max-width: 140px;
 }
 
 .product-price {

@@ -17,6 +17,7 @@
     <style>
         <?php include "./assets/css/cart.css" ?>
         <?php include "./assets/css/detail.css" ?>
+        <?php include "./assets/css/home.css" ?>
     </style>
 
 </head>
@@ -30,7 +31,6 @@
                 <ul>
                     <li><a href="./home">Home</a></li>
                     <li><a href="products">Products</a></li>
-                    <li><a href="#">About</a></li>
                     <li><a style="background-color: dodgerblue;" href="#"><img style="width:20px;padding:0px;" src="https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png"></a></li>
                     <?php if($_SESSION['username'] == 1) echo "<li><a href=\"manage/viewProductPage/1\">Admin</a></li><li><a href=\"login/logout\">Logout</a></li>";
                     else echo "<li><a href=\"login/logout\">Logout</a></li>";?>
@@ -40,16 +40,16 @@
     </div>
 
     <div class="cart">
-        <h2>My Cart</h2>
+        <h2>My Cart<img style="width:20px;padding:0px;margin-left:10px" src="https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png"></h2>
         <div class="order-list">
             <?php 
                 $order_no = 0;
                 foreach($data["all-order"] as $order): 
                 $order_no++;
-                ?>
+            ?>
             <div class="order">
                 <div class="order-number"><p><?=$order_no?></p></div>
-                <div><img src="<?=$order["product_image"]?>"></div>
+                <div class="order-img"><img src="<?=$order["product_image"]?>"></div>
                 <div class="order-infor"> 
                     <div class="">
                         <div class="name">
@@ -75,9 +75,45 @@
                         </div>
                     </div>
                 </div>
-                <div class="total"></div>
+                <div class="total">
+                    <?php 
+                        if ($data["all-order-status"][$order_no-1] == 0):
+                    ?>
+                        <a href="cart/pay/<?=$data["all-order-id"][$order_no-1]?>">
+                            <?=$data["all-quantity"][$order_no-1]*$order["product_price"]?>$
+                        </a>
+                    <?php
+                        else: echo "Paid";
+                        endif;
+                    ?>
+                    
+                </div>
             </div>
             <?php endforeach; ?>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="useful-link">
+            <h3>Get To Know Us</h3>
+            <div><a href="#">Facebook</a></div>
+            <div><a href="#">Instagram</a></div>
+            <div><a href="#">Twitter</a></div>
+            <div><a href="#">Youtube</a></div>          
+        </div>
+        <div class="useful-link">
+            <h3>Let Us Help You</h3>
+            <div><a href="#">Shipping Rates & Policies</a></div>
+            <div><a href="#">Returns & Replacements</a></div>
+            <div><a href="#">Manage Your Content and Devices</a></div>
+            <div><a href="#">Help</a></div>
+        </div>
+        <div class="useful-link">
+            <h3>Make Money With Us</h3>
+            <div><a href="#">Sell products on RedStore</a></div>
+            <div><a href="#">Sell on RedStore Business</a></div>
+            <div><a href="#">Advertise Your Products</a></div>
+            <div><a href="#">Self-Publish with Us</a></div>
         </div>
     </div>
 
