@@ -319,6 +319,13 @@ input[readonly] {
 .modal-body {
   font-size:25px;
 }
+.main{
+  background: url("https://lh3.googleusercontent.com/d/1YqkjSadW714piyVpkKu6IeG9uUNN1ZOa") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 </style>
 
 </body>

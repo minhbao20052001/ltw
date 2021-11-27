@@ -46,7 +46,7 @@ create table order_product(
 );
 
 insert into member (member_id,	member_name,	member_password,	member_email,	member_phone,	member_role )
-values ('1', 'Ly Thanh Tong', '123', 'lythanhtong@gmail.com', '091234567', 'admin');
+values ('1', 'Ly Thanh Tong', '123', 'lythanh@gmail.com', '091234567', 'admin');
 insert into member (member_id,	member_name,	member_password,	member_email,	member_phone)
 values ('2', 'Le Dai Hanh', '345', 'ledaihanh@gmail.com', '091234568');
 insert into member (member_id,	member_name,	member_password,	member_email,	member_phone)
