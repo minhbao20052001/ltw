@@ -6,7 +6,7 @@ create table member(
 	member_password varchar(30) not null,
 	member_email varchar(20) not null,
 	member_phone int not null,
-	member_avatar LONGBLOB
+	member_role varchar(20) DEFAULT 'user'
 );
 create table products (
     product_id int not null auto_increment primary key,
@@ -33,6 +33,7 @@ create table order_product(
 	quantity int not null DEFAULT 1,
     user_member int,
     product_id int,
+    product_status boolean DEFAULT 0,
     FOREIGN KEY (user_member)
         REFERENCES member(member_id)
         ON DELETE SET NULL,
@@ -41,14 +42,14 @@ create table order_product(
         ON DELETE SET NULL
 );
 
-insert into member (member_id,	member_name,	member_password,	member_email,	member_phone,	member_avatar )
-values ('1', 'Ly Thanh Tong', '123', 'lythanhtong@gmail.com', '091234567', '');
-insert into member (member_id,	member_name,	member_password,	member_email,	member_phone,	member_avatar )
-values ('2', 'Le Dai Hanh', '345', 'ledaihanh@gmail.com', '091234568', '');
-insert into member (member_id,	member_name,	member_password,	member_email,	member_phone,	member_avatar )
-values ('4', 'Nguyen Anh', '456', 'nguyenanh@gmail.com', '091234569', '');
-insert into member (member_id,	member_name,	member_password,	member_email,	member_phone,	member_avatar )
-values ('5', 'Quang Trung', '789', 'quangtrung@gmail.com', '091234560', '');
+insert into member (member_id,	member_name,	member_password,	member_email,	member_phone,	member_role )
+values ('1', 'Ly Thanh Tong', '123', 'lythanhtong@gmail.com', '091234567', 'admin');
+insert into member (member_id,	member_name,	member_password,	member_email,	member_phone)
+values ('2', 'Le Dai Hanh', '345', 'ledaihanh@gmail.com', '091234568');
+insert into member (member_id,	member_name,	member_password,	member_email,	member_phone)
+values ('4', 'Nguyen Anh', '456', 'nguyenanh@gmail.com', '091234569');
+insert into member (member_id,	member_name,	member_password,	member_email,	member_phone)
+values ('5', 'Quang Trung', '789', 'quangtrung@gmail.com', '091234560');
 
 INSERT INTO `order_product` (`order_id`, `quantity`, `user_member`, `product_id`) VALUES
 (1, 1, 1, 1),

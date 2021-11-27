@@ -67,11 +67,11 @@ class manageModal extends db{
         if($id != -1){
             $typesql = "DELETE FROM member WHERE member_id=" . $id . ";";
             $query = $this->_query($typesql);
-            $typesql1 = "insert into member (member_id,member_name, member_password, member_email, member_phone, member_avatar)
+            $typesql1 = "insert into member (member_id,member_name, member_password, member_email, member_phone, member_role)
             values (".$id.",'".$Name."', '".$Password."', '".$Email."', ".$Phone.", '".$Avatar."');";
             $query1 = $this->_query($typesql1);
         }else{
-            $typesql1 = "insert into member (member_name, member_password, member_email, member_phone, member_avatar)
+            $typesql1 = "insert into member (member_name, member_password, member_email, member_phone, member_role)
             values ('".$Name."', '".$Password."', '".$Email."', ".$Phone.", '".$Avatar."');";
             $query1 = $this->_query($typesql1);
         }

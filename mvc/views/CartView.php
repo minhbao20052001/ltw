@@ -1,0 +1,86 @@
+<?php
+    require_once "./mvc/core/basehref.php";
+    $home_url = getUrl().'/';
+    if (!$_SESSION['username']){
+        header("Location: " . geturl(). "/login/loginView");
+    }
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <?php
+            echo "<base href='${home_url}'>";
+    ?>
+    <title>Products Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        <?php include "./assets/css/cart.css" ?>
+        <?php include "./assets/css/detail.css" ?>
+    </style>
+
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <a href="./home"><img src="https://lh3.googleusercontent.com/d/1Rc3H-oqkp8BIRXpcL_EOUMlBeNf5CSll" alt="#"></a>
+        </div>
+        <div>
+            <nav class="menu">
+                <ul>
+                    <li><a href="./home">Home</a></li>
+                    <li><a href="products">Products</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a style="background-color: dodgerblue;" href="#"><img style="width:20px;padding:0px;" src="https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png"></a></li>
+                    <?php if($_SESSION['username'] == 1) echo "<li><a href=\"manage/viewProductPage/1\">Admin</a></li><li><a href=\"login/logout\">Logout</a></li>";
+                    else echo "<li><a href=\"login/logout\">Logout</a></li>";?>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="cart">
+        <h2>My Cart</h2>
+        <div class="order-list">
+            <?php 
+                $order_no = 0;
+                foreach($data["all-order"] as $order): 
+                $order_no++;
+                ?>
+            <div class="order">
+                <div class="order-number"><p><?=$order_no?></p></div>
+                <div><img src="<?=$order["product_image"]?>"></div>
+                <div class="order-infor"> 
+                    <div class="">
+                        <div class="name">
+                            <?=$order["product_name"]?>
+                        </div>
+                        <div class="detail">
+                            <div class="attribute"> 
+                                Price: 
+                                <div class="value" id="cost"><?=$order["product_price"]?>$</div>
+                            </div>
+                            <div class="attribute"> 
+                                Brand: 
+                                <div class="value"><?=$order["product_brand"]?></div>
+                            </div>
+                            <div class="attribute"> 
+                                Category: 
+                                <div class="value"><?=$order["product_type"]?></div>
+                            </div>
+                            <div class="attribute"> 
+                                Quantity: 
+                                <div class="value" id="quantity"><?=$data["all-quantity"][$order_no-1]?></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="total"></div>
+            </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+
+</body>
+<script src="./assets/js/javascript.js"></script>
+</html>

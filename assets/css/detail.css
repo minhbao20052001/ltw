@@ -95,7 +95,7 @@ body {
     margin-left: 10px;
 }
 
-.order {
+.order-form {
     border: 1px solid black;
     border-radius: 20px;
     width: 20%;
@@ -105,7 +105,7 @@ body {
     padding: 20px;
 }
 
-.order .name {
+.order-form .name {
     text-align: center;
     color: brown;
     font-size: x-large;

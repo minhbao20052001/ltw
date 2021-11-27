@@ -1,6 +1,9 @@
 <?php
 require_once "./mvc/core/basehref.php";
 $home_url = getUrl().'/';
+if (!$_SESSION['username'] && $_SESSION['username'] == 1){
+    header("Location: " . geturl(). "/login/loginView");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -96,9 +99,9 @@ $home_url = getUrl().'/';
                                         <td class="Type_Product_value"><?=$value['member_password']?></td>
                                         <td class="Price_Product_value"><?=$value['member_email']?></td>
                                         <td class="Quantity_Product_value"><?=$value['member_phone']?></td>
-                                        <td class="Rating_Product_value"><?=$value['member_avatar']?></td>
+                                        <td class="Rating_Product_value"><?=$value['member_role']?></td>
                                         <td>
-                                            <i class="bi bi-gear-fill edit-product" data-id="<?=$value['member_id']?>--<?=$value['member_name']?>--<?=$value['member_password']?>--<?=$value['member_email']?>--<?=$value['member_phone']?>--<?=$value['member_avatar']?>" data-toggle="modal" data-target="#exampleModalScrollable"></i>
+                                            <i class="bi bi-gear-fill edit-product" data-id="<?=$value['member_id']?>--<?=$value['member_name']?>--<?=$value['member_password']?>--<?=$value['member_email']?>--<?=$value['member_phone']?>--<?=$value['member_role']?>" data-toggle="modal" data-target="#exampleModalScrollable"></i>
                                             <i class="bi bi-x-circle-fill delete-product" data-toggle="modal" data-target="#exampleModal" data-id="<?=$value['member_id']?>"></i>
                                         </td>
                                     </tr>
@@ -217,7 +220,7 @@ $home_url = getUrl().'/';
                         <input type="text" class="form-control" id="Phone_User" name="Phone_User" required>
                     </div>
                     <div class="form-group">
-                        <label for="Avatar_User">Avatar</label>
+                        <label for="Avatar_User">Role</label>
                         <input type="text" class="form-control" id="Avatar_User" name="Avatar_User" required>
                     </div>
                 </form>

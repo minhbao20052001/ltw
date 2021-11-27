@@ -1,6 +1,9 @@
 <?php
 require_once "./mvc/core/basehref.php";
 $home_url = getUrl().'/';
+if (!$_SESSION['username'] && $_SESSION['username'] == 1){
+    header("Location: " . geturl(). "/login/loginView");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
