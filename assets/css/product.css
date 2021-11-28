@@ -73,11 +73,28 @@ body {
 .type-product{
     width: 100%;
 }
-.type-product h2 {
-    margin: 0px;
-    border-bottom: 1px solid black;
+
+.type-product .title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title .topic {
+    font-size: xx-large;
+    font-weight: 800;
     padding: 10px;
-    max-width: 100%;
+}
+
+.title .search-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#search-form {
+    border-radius: 20px;
+    height: 30px;
+    padding-left: 10px;
 }
 
 .product-list {
@@ -122,9 +139,7 @@ body {
     font-weight: 700;
     
 }
-#category{
-    background-color: rgb(142, 197, 252);
-}
+
 @media only screen and (max-width: 1000px) {
     .header {
         display: block;

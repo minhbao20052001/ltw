@@ -170,8 +170,9 @@ body {
 .product .img {
     display: flex;
     justify-content: center;
-    max-width: 210px;
-    min-width: 210px;
+    align-items: center;
+    max-width: 250px;
+    min-width: 250px;
     max-height: 210px;
     min-height: 210px;
 }

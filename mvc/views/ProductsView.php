@@ -67,13 +67,20 @@
         </div>
 
         <div class="type-product">
-            <h2 id="category">
-                <?php 
-                    if (array_key_exists("type", $data)) echo $data["type"];
-                    else if (array_key_exists("price", $data)) echo $data["price"];
-                    else echo "All Products";
-                ?>
-            </h2>
+            <div class="title">
+                <div class="topic">
+                    <?php 
+                        if (array_key_exists("type", $data)) echo $data["type"];
+                        else if (array_key_exists("price", $data)) echo $data["price"];
+                        else if (array_key_exists("search", $data)) echo "Result for '".$data["search"]."'";
+                        else echo "All Products";
+                    ?>
+                </div>
+                <div class="search-box">
+                    <input id="search-form" type="text" placeholder="Search" onchange="changeUrl()">
+                    <a id="search-btn" href="#"><img style="height:16px;margin:10px;" src="http://assets.stickpng.com/images/585e4ad1cb11b227491c3391.png"></a>
+                </div>
+            </div>
             <div class="product-list">
                 <?php 
                     while ($row = mysqli_fetch_assoc($data["all-pro"])){
@@ -118,4 +125,10 @@
 
 </body>
 <script src="./assets/js/javascript.js"></script>
+<script>
+    function changeUrl(){
+        var searchValue = document.getElementById("search-form").value;
+        document.getElementById("search-btn").href = "products/search/"+searchValue;
+    }
+</script>
 </html>

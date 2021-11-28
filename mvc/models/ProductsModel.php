@@ -29,5 +29,10 @@
             $qr = "SELECT * FROM PRODUCTS WHERE product_price >=".$p1." AND product_price <".$p2."";
             return mysqli_query($this->connect, $qr);
         }
+
+        public function searchProduct($value){
+            $qr = "SELECT * FROM products WHERE product_name LIKE '%".$value."%' OR product_type LIKE '%".$value."%' OR product_brand LIKE '%".$value."%' OR product_detail LIKE '%".$value."%'";
+            return mysqli_query($this->connect, $qr);
+        }
     }
 ?>

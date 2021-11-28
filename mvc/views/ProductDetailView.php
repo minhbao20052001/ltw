@@ -123,7 +123,7 @@
                 <?php 
                     while ($row = mysqli_fetch_assoc($data["related-pro"])){
                         echo '<div class="product">
-                                <a href="products/productdetail/'.$row["product_id"].'"><div class="img"><img src="'.$row["product_image"].'" alt="#"></div></a>
+                                <a href="products/productdetail/'.$row["product_id"].'"><div class="img"><div><img src="'.$row["product_image"].'" alt="#"></div></div></a>
                                 <h3>'.$row["product_price"].'$</h3>
                                 <div class="name">'.$row["product_name"].'</div>
                             </div>';

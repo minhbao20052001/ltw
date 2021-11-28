@@ -41,5 +41,14 @@
             $related_product = $productDB->getRelatedProducts($product["product_type"]);
             $this->view("ProductDetailView", ["pro"=>$product, "related-pro"=>$related_product]);
         }
+
+        function search($value){
+            $productDB = $this->model("ProductsModel");
+            $this->view("ProductsView", [
+                "all-pro"=>$productDB->searchProduct($value),
+                "all-type"=>$productDB->getAllCategories(),
+                "search"=>$value,
+            ]);   
+        }
     }
 ?>
