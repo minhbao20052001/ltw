@@ -3,18 +3,18 @@ CREATE DATABASE db_ass;
 USE db_ass;
 create table member(
 	member_id int not null auto_increment primary key,
-	member_name varchar(20) not null,
-	member_password varchar(30) not null,
-	member_email varchar(30) not null,
+	member_name varchar(255) not null,
+	member_password varchar(255) not null,
+	member_email varchar(255) not null,
 	member_phone int not null,
-	member_role varchar(20) DEFAULT 'user'
+	member_role varchar(255) DEFAULT 'user'
 );
 create table products (
     product_id int not null auto_increment primary key,
     product_name varchar(1000) not null,
-    product_type varchar(50) not null,
+    product_type varchar(255) not null,
     product_price decimal(10,2) not null,
-    product_brand varchar(50),
+    product_brand varchar(255),
     product_quantity int not null,
     product_detail varchar(10000) not null,
     product_image varchar(1000) not null
@@ -44,15 +44,18 @@ create table order_product(
         REFERENCES products(product_id)
         ON DELETE SET NULL
 );
-
+-- Mk: 123
 insert into member (member_id,	member_name,	member_password,	member_email,	member_phone,	member_role )
-values ('1', 'Ly Thanh Tong', '123', 'lythanh@gmail.com', '091234567', 'admin');
+values ('1', 'Ly Thanh Tong', '$2y$10$jt2.6I2j7hnnrK2GOXIi7eIwe6sTh1ONCQ3vky5eIlD3sMKqlVnQS', 'lythanh@gmail.com', '091234567', 'admin'); 
+-- MK: 345
 insert into member (member_id,	member_name,	member_password,	member_email,	member_phone)
-values ('2', 'Le Dai Hanh', '345', 'ledaihanh@gmail.com', '091234568');
+values ('2', 'Le Dai Hanh', '$2y$10$FH18jcnNQ0A4DoPaeoAztO3mgF/UC7m8tJr5m23S.7bc.Jo9EqFF2', 'ledaihanh@gmail.com', '091234568');
+-- MK: 456
 insert into member (member_id,	member_name,	member_password,	member_email,	member_phone)
-values ('4', 'Nguyen Anh', '456', 'nguyenanh@gmail.com', '091234569');
+values ('4', 'Nguyen Anh', '$2y$10$mwc3q/IUw4dLSVLLZ/i8YuJnvIv3XubQcldWZ7Kh7Kt7GY63kWo86', 'nguyenanh@gmail.com', '091234569');
+-- MK: 789
 insert into member (member_id,	member_name,	member_password,	member_email,	member_phone)
-values ('5', 'Quang Trung', '789', 'quangtrung@gmail.com', '091234560');
+values ('5', 'Quang Trung', '$2y$10$4hnG/Pw/Hwxlou/nqrdBke1BbiLNdjS9NluxP9I6n6w2/MHejVqfy', 'quangtrung@gmail.com', '091234560');
 
 INSERT INTO `order_product` (`order_id`, `quantity`, `user_member`, `product_id`) VALUES
 (1, 1, 1, 1),
