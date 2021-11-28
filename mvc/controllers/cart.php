@@ -12,11 +12,13 @@
             $orderStatusList = array();
 
             foreach ($cartDB->getAllOrders($user_id) as $order){
-                $product = mysqli_fetch_array($productDB->getProduct($order["product_id"]));
-                array_push($orderList, $product);
-                array_push($quantityList, $order["quantity"]);
-                array_push($orderIdList, $order["order_id"]);
-                array_push($orderStatusList, $order["order_status"]);
+                if($order["product_id"]) {
+                    $product = mysqli_fetch_array($productDB->getProduct($order["product_id"]));
+                    array_push($orderList, $product);
+                    array_push($quantityList, $order["quantity"]);
+                    array_push($orderIdList, $order["order_id"]);
+                    array_push($orderStatusList, $order["order_status"]);
+                }
             }
 
             $this->view("CartView", [
