@@ -79,6 +79,10 @@ body {
     justify-content: space-between;
 }
 
+.title {
+    background-color: dodgerblue;
+}
+
 .title .topic {
     font-size: xx-large;
     font-weight: 800;
@@ -95,6 +99,7 @@ body {
     border-radius: 20px;
     height: 30px;
     padding-left: 10px;
+    border: 2px solid black;
 }
 
 .product-list {
