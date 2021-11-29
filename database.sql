@@ -37,6 +37,7 @@ create table order_product(
     user_member int,
     product_id int,
     order_status boolean DEFAULT 0,
+    order_in_cart boolean DEFAULT 1,
     FOREIGN KEY (user_member)
         REFERENCES member(member_id)
         ON DELETE SET NULL,
