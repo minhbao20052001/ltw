@@ -96,7 +96,7 @@ if (!$_SESSION['username'] && $_SESSION['username'] == 1){
                                     <tr data-id="<?=$value['member_id']?>">
                                         <th scope="row"><?=$value['member_id']?></th>
                                         <td class="Name_Product_value"><?=$value['member_name']?></td>
-                                        <td class="Type_Product_value"><?=$value['member_password']?></td>
+                                        <td class="Type_Product_value">*******</td>
                                         <td class="Price_Product_value"><?=$value['member_email']?></td>
                                         <td class="Quantity_Product_value"><?=$value['member_phone']?></td>
                                         <td class="Rating_Product_value"><?=$value['member_role']?></td>
