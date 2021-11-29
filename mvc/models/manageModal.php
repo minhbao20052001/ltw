@@ -41,13 +41,11 @@ class manageModal extends db{
     } 
     public function getProductUserPaging($page){
         $skip = (intval($page) - 1) * 5;
-        $skipnext = $skip + 5;
         if(intval($page) - 1 == 0){
             $skip = 0;
-            $skipnext = 5;
         }
         
-        $typesql = "SELECT * FROM member LIMIT ".$skip.", ".$skipnext.";";
+        $typesql = "SELECT * FROM member LIMIT ".$skip.", 5;";
         $query1 = $this->_query($typesql);
         if(!$query1) return [];
         $types = [];
@@ -62,6 +60,7 @@ class manageModal extends db{
         return $query1;
     }
     public function editUserManage($id,$Name,$Password,$Email,$Phone,$Avatar){
+        $Password = password_hash($Password, PASSWORD_DEFAULT);
         if($id != -1){
             $typesql = "DELETE FROM member WHERE member_id=" . $id . ";";
             $query = $this->_query($typesql);
