@@ -97,7 +97,7 @@ body {
     max-width: 300px;
 }
 
-.total a {
+.total #pay, #remove {
     background-color: chocolate;
     border-radius: 30px;
     border: 1px solid white;
@@ -107,8 +107,16 @@ body {
     color: white;
 }
 
-.total a:hover {
+.total #pay:hover,#remove:hover {
     background-color: rgb(230, 136, 70);
+}
+
+.total #paid {
+    border-radius: 30px;
+    border: 1px solid white;
+    text-align: center;
+    padding: 10px 20px 10px 20px;
+    background-color: gray;
 }
 
 @media only screen and (max-width: 1000px) {

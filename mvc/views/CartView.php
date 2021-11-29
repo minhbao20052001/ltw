@@ -79,13 +79,15 @@
                     <?php 
                         if ($data["all-order-status"][$order_no-1] == 0):
                     ?>
-                        <a href="cart/pay/<?=$data["all-order-id"][$order_no-1]?>">
+                        <a id="pay" href="cart/pay/<?=$data["all-order-id"][$order_no-1]?>">
                             <?=$data["all-quantity"][$order_no-1]*$order["product_price"]?>$
                         </a>
                     <?php
-                        else: echo "Paid";
+                        else: echo '<div id="paid">'.$data["all-quantity"][$order_no-1]*$order["product_price"].'$</div>';
                         endif;
                     ?>
+
+                    <a id="remove" href="cart/remove/<?=$data["all-order-id"][$order_no-1]?>/<?=$data["all-order-status"][$order_no-1]?>">Remove</a>
                     
                 </div>
             </div>

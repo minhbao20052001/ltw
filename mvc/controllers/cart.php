@@ -12,7 +12,7 @@
             $orderStatusList = array();
 
             foreach ($cartDB->getAllOrders($user_id) as $order){
-                if($order["product_id"]) {
+                if($order["product_id"] and $order["order_in_cart"] == 1) {
                     $product = mysqli_fetch_array($productDB->getProduct($order["product_id"]));
                     array_push($orderList, $product);
                     array_push($quantityList, $order["quantity"]);
@@ -32,6 +32,12 @@
         function pay($order_id){
             $cartDB = $this->model("CartModel");
             $cartDB->payOrder($order_id);
+            header("Location: " . geturl(). "/cart");
+        }
+
+        function remove($order_id, $order_status){
+            $cartDB = $this->model("CartModel");
+            $cartDB->removeOrder($order_id, $order_status);
             header("Location: " . geturl(). "/cart");
         }
     }
