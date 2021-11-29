@@ -59,13 +59,13 @@ class manageModal extends db{
         return $query1;
     }
     public function editUserManage($id,$Name,$Password,$Email,$Phone,$Avatar){
-        $Password = password_hash($Password, PASSWORD_DEFAULT);
         if($id != -1){
             $typesql1 = "UPDATE member
                         SET member_name='".$Name."', member_password='".$Password."', member_email='".$Email."', member_phone=".$Phone.", member_role='".$Avatar."'
                         WHERE member_id=".$id.";";
             $query1 = $this->_query($typesql1);
         }else{
+            $Password = password_hash($Password, PASSWORD_DEFAULT);
             $typesql1 = "insert into member (member_name, member_password, member_email, member_phone, member_role)
             values ('".$Name."', '".$Password."', '".$Email."', ".$Phone.", '".$Avatar."');";
             $query1 = $this->_query($typesql1);
